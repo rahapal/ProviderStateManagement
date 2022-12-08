@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learnprovider/ProviderController/Theme_provider.dart';
+import 'package:learnprovider/ProviderController/api_provider.dart';
 import 'package:learnprovider/ProviderController/favorite_provider.dart';
 import 'package:learnprovider/ProviderController/silder_provider.dart';
 import 'package:learnprovider/ScreenUsingProvider/Slider_with_provider.dart';
@@ -34,6 +35,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => ThemeProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => AuthProvider(),
         ),
       ],
       child: Builder(builder: (BuildContext context) {

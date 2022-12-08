@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:learnprovider/ScreenUsingProvider/api_provider.dart';
 
 class DemoPage extends StatelessWidget {
   DemoPage({super.key});
@@ -11,7 +12,10 @@ class DemoPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Demo'), actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => AuthScreen()));
+          },
           icon: Icon(
             Icons.navigate_next,
             size: 40,
@@ -19,13 +23,26 @@ class DemoPage extends StatelessWidget {
         ),
       ]),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          TextFormField(
-            obscureText: _password.value,
-            decoration: InputDecoration(
-              hintText: 'Password',
-            ),
-          ),
+          ValueListenableBuilder(
+              valueListenable: _password,
+              builder: (context, value, child) {
+                return TextFormField(
+                  obscureText: _password.value,
+                  decoration: InputDecoration(
+                    hintText: 'Password',
+                    suffix: InkWell(
+                      onTap: () {
+                        _password.value = !_password.value;
+                      },
+                      child: _password.value
+                          ? Icon(Icons.visibility)
+                          : Icon(Icons.visibility_off),
+                    ),
+                  ),
+                );
+              }),
           Center(
             child: ValueListenableBuilder(
               valueListenable: _counter,
