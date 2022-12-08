@@ -3,6 +3,8 @@ import 'package:learnprovider/ProviderController/Theme_provider.dart';
 import 'package:learnprovider/ScreenUsingProvider/Making_stateless_as_stateful.dart';
 import 'package:provider/provider.dart';
 
+import 'api_provider.dart';
+
 class ThemeScreen extends StatefulWidget {
   const ThemeScreen({super.key});
 
@@ -11,6 +13,7 @@ class ThemeScreen extends StatefulWidget {
 }
 
 class _ThemeScreenState extends State<ThemeScreen> {
+  @override
   @override
   Widget build(BuildContext context) {
     final themeprovider = Provider.of<ThemeProvider>(context);
@@ -25,6 +28,17 @@ class _ThemeScreenState extends State<ThemeScreen> {
                 MaterialPageRoute(
                   builder: (context) => DemoPage(),
                 ),
+              );
+            },
+            icon: const Icon(
+              Icons.navigate_next_rounded,
+              size: 40,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => DemoPage()),
               );
             },
             icon: const Icon(

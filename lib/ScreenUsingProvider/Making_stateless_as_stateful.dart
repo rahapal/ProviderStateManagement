@@ -13,8 +13,8 @@ class DemoPage extends StatelessWidget {
       appBar: AppBar(title: Text('Demo'), actions: [
         IconButton(
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => AuthScreen()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: ((context) => AuthScreen())));
           },
           icon: Icon(
             Icons.navigate_next,

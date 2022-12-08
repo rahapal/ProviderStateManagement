@@ -15,9 +15,8 @@ class AuthProvider with ChangeNotifier {
 
   void auth(String email, String password) async {
     load(true);
-
     try {
-      final response = await post(
+      Response response = await post(
         Uri.parse('https://reqres.in/api/login'),
         body: {
           'email': email,

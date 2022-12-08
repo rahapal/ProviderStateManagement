@@ -11,11 +11,18 @@ class AuthScreen extends StatefulWidget {
 
 class _AuthScreenState extends State<AuthScreen> {
   TextEditingController _emailcontroller = TextEditingController();
-  TextEditingController _passwordcontroller = TextEditingController();
+  TextEditingController _pwcontroller = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailcontroller.dispose();
+    _pwcontroller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final authprovider = Provider.of<AuthProvider>(context);
+    //final authprovider = Provider.of<AuthProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Login'),
@@ -31,7 +38,7 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
           ),
           TextFormField(
-            controller: _passwordcontroller,
+            controller: _pwcontroller,
             decoration: InputDecoration(
               hintText: 'Password',
             ),
@@ -39,19 +46,25 @@ class _AuthScreenState extends State<AuthScreen> {
           SizedBox(
             height: 20,
           ),
-          InkWell(
+          GestureDetector(
             onTap: () {
-              authprovider.auth(
-                _emailcontroller.toString(),
-                _passwordcontroller.toString(),
-              );
+              context.read<AuthProvider>().auth(
+                    _emailcontroller.toString(),
+                    _pwcontroller.toString(),
+                  );
             },
             child: Container(
               height: 50,
-              width: double.infinity,
+              width: 150,
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(10),
+              ),
               child: Center(
-                  child: authprovider.load(true)
-                      ? const CircularProgressIndicator()
+                  child: context.watch<AuthProvider>().isload
+                      ? const CircularProgressIndicator(
+                          color: Colors.white,
+                        )
                       : const Text('Login')),
             ),
           )
