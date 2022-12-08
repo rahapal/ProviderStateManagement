@@ -23,7 +23,7 @@ class _ThemeScreenState extends State<ThemeScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const DemoPage(),
+                  builder: (context) => DemoPage(),
                 ),
               );
             },
