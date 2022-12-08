@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learnprovider/ProviderController/Theme_provider.dart';
+import 'package:learnprovider/ScreenUsingProvider/Making_stateless_as_stateful.dart';
 import 'package:provider/provider.dart';
 
 class ThemeScreen extends StatefulWidget {
@@ -14,7 +15,25 @@ class _ThemeScreenState extends State<ThemeScreen> {
   Widget build(BuildContext context) {
     final themeprovider = Provider.of<ThemeProvider>(context);
     return Scaffold(
-      appBar: AppBar(title: Text('Theme Color')),
+      appBar: AppBar(
+        title: const Text('Theme Color'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DemoPage(),
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.navigate_next_rounded,
+              size: 40,
+            ),
+          ),
+        ],
+      ),
       body: Column(
         children: [
           RadioListTile<ThemeMode>(
