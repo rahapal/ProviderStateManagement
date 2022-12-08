@@ -28,7 +28,7 @@ class _CountProviderPageState extends State<CountProviderPage> {
     final countprovider = Provider.of<CountProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Subscribe'),
+        title: const Text('Counter'),
         actions: [
           IconButton(
             onPressed: () {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learnprovider/ScreenUsingProvider/MyFavorite.dart';
+import 'package:learnprovider/ScreenUsingProvider/Theme_with_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../ProviderController/favorite_provider.dart';
@@ -25,19 +26,22 @@ class _FavoriteProviderPageState extends State<FavoriteProviderPage> {
             },
             icon: const Icon(
               Icons.favorite,
-              color: Colors.red,
+              color: Colors.green,
               size: 40,
             ),
           ),
           IconButton(
-            onPressed: () {},
-            icon: Icon(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const ThemeScreen()));
+            },
+            icon: const Icon(
               Icons.navigate_next_rounded,
               size: 40,
             ),
           ),
         ],
-        title: Text('Favourite'),
+        title: const Text('Favourite'),
       ),
       body: ListView.builder(
           itemCount: 20,
