@@ -15,6 +15,18 @@ class DemoPage extends StatelessWidget {
           ),
         ),
       ]),
+      body: Center(
+        child: Text(
+          'Hello',
+          style: TextStyle(
+            fontSize: 30,
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
