@@ -18,10 +18,24 @@ class _ThemeScreenState extends State<ThemeScreen> {
       body: Column(
         children: [
           RadioListTile<ThemeMode>(
-              title: const Text('Light Mode'),
-              value: ThemeMode.light,
-              groupValue: themeprovider.themeMode,
-              onChanged: themeprovider.setcolor),
+            title: const Text('Light Mode'),
+            value: ThemeMode.light,
+            groupValue: themeprovider.themeMode,
+            onChanged: themeprovider.setcolor,
+          ),
+          RadioListTile<ThemeMode>(
+            title: const Text('Dark Mode'),
+            value: ThemeMode.dark,
+            groupValue: themeprovider.themeMode,
+            onChanged: themeprovider.setcolor,
+          ),
+          RadioListTile<ThemeMode>(
+            title: const Text('System Mode'),
+            value: ThemeMode.system,
+            groupValue: themeprovider.themeMode,
+            onChanged: themeprovider.setcolor,
+          ),
+          Icon(Icons.favorite),
         ],
       ),
     );

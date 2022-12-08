@@ -36,13 +36,25 @@ class MyApp extends StatelessWidget {
           create: (_) => ThemeProvider(),
         ),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.red,
-        ),
-        home: const CountProviderPage(),
-      ),
+      child: Builder(builder: (BuildContext context) {
+        final themechanger = Provider.of<ThemeProvider>(context);
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          themeMode: themechanger.themeMode,
+          theme: ThemeData(
+            brightness: Brightness.light,
+            primarySwatch: Colors.red,
+          ),
+          darkTheme: ThemeData(
+            primarySwatch: Colors.green,
+            brightness: Brightness.dark,
+            primaryColor: Colors.purple,
+            iconTheme: IconThemeData(color: Colors.purple),
+            appBarTheme: AppBarTheme(backgroundColor: Colors.purple),
+          ),
+          home: const CountProviderPage(),
+        );
+      }),
     );
 
     //For single provider class
