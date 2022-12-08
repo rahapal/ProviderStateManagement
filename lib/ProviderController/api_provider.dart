@@ -1,6 +1,40 @@
 //Material deyena vani
-import 'package:flutter/foundation.dart';
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 class AuthProvider with ChangeNotifier {
-  void auth(String email, String password) async {}
+  bool _isload = false;
+  bool get isload => _isload;
+
+  load(bool value) {
+    _isload = value;
+    notifyListeners();
+  }
+
+  void auth(String email, String password) async {
+    load(true);
+
+    try {
+      final response = await post(
+        Uri.parse('https://reqres.in/api/login'),
+        body: {
+          'email': email,
+          'password': password,
+        },
+      );
+      if (response.statusCode == 200) {
+        load(false);
+        var data = jsonDecode(response.body.toString());
+        print('Successful');
+      } else {
+        load(false);
+        print('Failed');
+      }
+    } catch (e) {
+      load(false);
+      print(e.toString());
+    }
+  }
 }

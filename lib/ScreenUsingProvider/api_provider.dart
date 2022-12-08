@@ -49,7 +49,10 @@ class _AuthScreenState extends State<AuthScreen> {
             child: Container(
               height: 50,
               width: double.infinity,
-              child: Text('Login'),
+              child: Center(
+                  child: authprovider.load(true)
+                      ? const CircularProgressIndicator()
+                      : const Text('Login')),
             ),
           )
         ],
