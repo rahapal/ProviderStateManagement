@@ -29,6 +29,13 @@ class _FavoriteProviderPageState extends State<FavoriteProviderPage> {
               size: 40,
             ),
           ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.navigate_next_rounded,
+              size: 40,
+            ),
+          ),
         ],
         title: Text('Favourite'),
       ),
